@@ -1,0 +1,6 @@
+	var intShare = Ti.Android.createIntent({
+						action : Ti.Android.ACTION_SEND,
+						type : "text/plain"
+	});
+	intShare.putExtra(Ti.Android.EXTRA_TEXT, 'text content');
+	Ti.Android.currentActivity.startActivity(intShare);
