@@ -1,0 +1,95 @@
+Index.js:
+var intent = Ti.Android.createServiceIntent({
+	url : 'ExampleService.js'
+});
+
+function doClick(e) {
+    var now = new Date().getTime()
+	var delta = new Date( now + (900* 1000) );
+	var deltaMS = delta - now;
+	intent.putExtra('interval', deltaMS);
+	intent.putExtra('message' , 'This is that little extra');
+	Ti.Android.startService(intent);
+}
+
+$.index.open();
+///////////////////////////////////////////////////////////////////////////////////
+tiapp.xml:
+<android xmlns:android="http://schemas.android.com/apk/res/android">
+	   <!-- the activities tag must be added if you want to use the url property to launch your app -->
+	   <activities>
+	       <activity url="app.js">
+	           <intent-filter>
+	               <action android:name="android.intent.action.VIEW"/>
+	               <category android:name="android.intent.category.DEFAULT"/>
+	               <category android:name="android.intent.category.BROWSABLE"/>
+	           </intent-filter>
+	       </activity>
+	   </activities>
+	   <!-- the services tag must be added so that our service will run -->
+	   <services>
+	       <service type="interval" url="ExampleService.js"/>
+	   </services>
+	</android>
+////////////////////////////////////////////////////////////////////////////////////	
+app/assets/android/ExampleService.js
+Note: you can determine the below 'className' value from 'build\android\gen\com\test' folder
+
+if(!Ti.App.Properties.hasProperty('notificationCount')) {
+	Ti.App.Properties.setInt('notificationCount', 0);
+} else {
+	Ti.App.Properties.removeProperty('notificationCount');
+
+	var activity = Ti.Android.currentActivity;
+	var intent = Ti.Android.createIntent({
+		action : Ti.Android.ACTION_MAIN,
+		// you can use className or url to launch the app
+		// className and packageName can be found by looking in the build folder
+		// for example, mine looked like this
+		// build/android/gen/com/appcelerator/test/Test7Activity.java
+		// className : 'com.appcelerator.test.Test7Activity',
+
+		// if you use url, you need to make some changes to your tiapp.xml
+		//url : 'app.js',
+		className: 'com.test.Testapp3Activity',
+		flags : Ti.Android.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED | Ti.Android.FLAG_ACTIVITY_SINGLE_TOP
+	});
+	intent.addCategory(Titanium.Android.CATEGORY_LAUNCHER);
+
+	var pending = Ti.Android.createPendingIntent({
+		activity : activity,
+		intent : intent,
+		type : Ti.Android.PENDING_INTENT_FOR_ACTIVITY,
+		flags : Ti.Android.FLAG_ACTIVITY_NO_HISTORY
+	});
+
+	var notification = Ti.Android.createNotification({
+		contentIntent : pending,
+		contentTitle : 'Test',
+		contentText : 'test',
+		tickerText : 'This is a test',
+		// "when" will only put the timestamp on the notification and nothing else.
+		// Setting it does not show the notification in the future
+		when : new Date().getTime(),
+		icon : Ti.App.Android.R.drawable.appicon,
+		flags : Titanium.Android.ACTION_DEFAULT | Titanium.Android.FLAG_AUTO_CANCEL | Titanium.Android.FLAG_SHOW_LIGHTS
+	});
+
+	Ti.Android.NotificationManager.notify(1, notification);
+
+	var service = Ti.Android.currentService;
+	var serviceIntent = service.getIntent();
+
+	// this will display that custom extra that we added when we created the intent
+	// intent.putExtra('message' , 'This is that little extra');
+	var teststring = serviceIntent.getStringExtra('message');
+	Ti.API.info('Extra!: ' + teststring);
+
+	Ti.Android.stopService(serviceIntent);
+}	
+
+	
+
+
+
+
