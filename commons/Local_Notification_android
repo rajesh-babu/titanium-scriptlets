@@ -5,7 +5,7 @@ var intent = Ti.Android.createServiceIntent({
 
 function doClick(e) {
     var now = new Date().getTime()
-	var delta = new Date( now + (900* 1000) );
+	var delta = new Date( now + (900* 1000) ); // run notification afer 15 minutes once you click the button
 	var deltaMS = delta - now;
 	intent.putExtra('interval', deltaMS);
 	intent.putExtra('message' , 'This is that little extra');
