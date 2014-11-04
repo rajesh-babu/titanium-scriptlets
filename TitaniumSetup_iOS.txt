@@ -1,0 +1,27 @@
+Install the following for iOS setup:
+
+Titanium SDK Version- 3.4.0 
+Xcode Version - 6.0.x
+
+iOS SDK version:
+Minimum SDK version:  8.0.x
+Maximum SDK version:  8.0.x
+Minimum target iOS version: 7.1.x
+Maximum target iOS version: 8.0.x
+
+
+Package	                 Environment Variable	    Local Path	                                Notes
+Android SDK Home	       ANDROID_SDK	             ~/android-sdk	                            Location of android (Android SDK Manager) and ddms (debug tool) executables
+Android Tools	           PATH	                     ~/android-sdk/tools	                      Location of android (Android SDK Manager) and ddms (debug tool) executables
+Android Platform Tools	 PATH	                     ~/android-sdk/platform-tools               Location of adb (Android Debug Bridge) executable
+git	                     N/A	                       /usr/bin	                                Location of git executable
+npm	                     N/A	                       /usr/local/bin	                          Location of npm executable
+Oracle JDK	             N/A	                       /usr/bin	                                Location of Java executables, java and javac (automatically symlinked)
+python	                 N/A	                       /usr/bin	                                Location of python executable
+Titanium SDK Home	       N/A	                      ~/Library/Application Support/Titanium	  Location of Mobile and Desktop SDKs (containing mobilesdk, modules,runtime & sdk directories), automatically managed by Titanium Studio
+Titanium Studio	         N/A	                       /Applications/Titanium Studio	          Location of Titanium Studio
+Titanium Studio Settings N/A	                      ~/.eclipse	
+Titanium Studio Workspace	N/A	                      ~/Documents/Titanium_Studio_Workspace	    Location of Titanium projects
+
+
+
