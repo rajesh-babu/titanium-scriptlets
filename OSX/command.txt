@@ -1,0 +1,6 @@
+// to delete android avd files
+$ sudo -i
+$ cd /users/rajeshbabu
+$ cd .android
+$ cd .avd
+$ rm -rf *.*
