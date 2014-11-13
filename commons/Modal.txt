@@ -1,0 +1,46 @@
+http://stackoverflow.com/questions/6242682/appcelerator-titanium-how-can-i-create-a-modal-window
+
+This is the current way to accomplish this in Titanium as of 3.1.3 on iOS.
+
+First, make a new window.
+
+var myModal = Ti.UI.createWindow({
+    title           : 'My Modal',
+    backgroundColor : 'transparent'
+});
+Then create a wrapper view, a background view, and a container view:
+
+var wrapperView    = Ti.UI.createView(); // Full screen
+var backgroundView = Ti.UI.createView({  // Also full screen
+    backgroundColor : '#000',
+    opacity         : 0.5
+});
+var containerView  = Ti.UI.createView({  // Set height appropriately
+    height          : 300
+    backgroundColor : '#FFF'
+});
+var someLabel      = Ti.UI.createLabel({
+    title : 'Here is your modal',
+    top   : 40
+});
+var closeButton    = Ti.UI.createButton({
+    title  : 'Close',
+    bottom : 40
+});
+closeButton.addEventListener('click', function () {
+    myModal.close();
+});
+Now build your UI stack. The order is important to avoid having to set z-index.
+
+containerView.add(someLabel);
+containerView.add(closeButton);
+
+wrapperView.add(backgroundView);
+wrapperView.add(containerView);
+
+myModal.add(wrapperView);
+Now you can open your modal, but to NOT set modal : true
+
+myModal.open({
+    animate : true
+});
