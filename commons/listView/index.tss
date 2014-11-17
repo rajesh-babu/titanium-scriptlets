@@ -1,0 +1,18 @@
+'.badgeProps': {
+	right : "0dp",
+	top: "12dp",
+	height: "20dp",
+	width: "25dp",
+	bubbleParent: false,
+	backgroundColor: 'red',//'#EB614E',
+	borderRadius: 10
+}
+
+'.badgeLabelProps': {
+	bubbleParent: false,
+	color: '#fff',
+	font:{
+		fontSize: 11
+	},
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+}
