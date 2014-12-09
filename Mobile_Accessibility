@@ -12,3 +12,5 @@ when error->document.title = "Error present in form -"+oldTitle
 ContentDescription - Android
 accessibilityLabel - iOS
 wrap the image inside the <button> with aria-lable for hamburg menu 
+
+http://pauljadam.com/
