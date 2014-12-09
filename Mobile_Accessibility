@@ -2,6 +2,7 @@ Refelector
 TExt size increase option
 Don't disable scale
 Voice Over and Talkback
+Fat Fingers
 color contrast
 placeholder contrast level
 put label on top of input
@@ -14,3 +15,6 @@ accessibilityLabel - iOS
 wrap the image inside the <button> with aria-lable for hamburg menu 
 
 http://pauljadam.com/
+
+http://pauljadam.com/demos/mobile101.html
+
