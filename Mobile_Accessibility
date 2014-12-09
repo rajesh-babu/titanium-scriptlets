@@ -1,0 +1,14 @@
+Refelector
+TExt size increase option
+Don't disable scale
+Voice Over and Talkback
+color contrast
+placeholder contrast level
+put label on top of input
+aria-required
+aria-invalid when error on page
+aria-live
+when error->document.title = "Error present in form -"+oldTitle
+ContentDescription - Android
+accessibilityLabel - iOS
+wrap the image inside the <button> with aria-lable for hamburg menu 
